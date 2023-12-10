@@ -1,0 +1,135 @@
+<!--<!DOCTYPE html >-->
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <style type="text/css">-->
+<!--        input{-->
+<!--            display: block;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Product Application</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--Log in-->
+
+<!--<form method="post" action="/user/login" th:object="${user}">-->
+<!--    Username:<input th:field="*{username}">-->
+<!--    Password:<input th:field="*{password}" type="password">-->
+<!--    <button type="submit">Login</button>-->
+
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style type="text/css">
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://storage.googleapis.com/pai-images/4e8fa00992fa4ace9cdd3a4a0f1c1660.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            max-width: 400px;
+            width: 100%;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #FF5C5C;
+            color: #fff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        button:hover {
+            background-color: #E64646;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+        }
+
+        .links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            .links {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 20px;
+            }
+
+            .links a {
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="links">
+    <a href="#">Testimonial</a>
+    <a href="/">Back Home</a>
+</div>
+<form method="post" action="/user/login" th:object="${user}">
+    <h2>Login</h2>
+    <label for="username">Username:</label>
+    <input id="username" th:field="*{username}" type="text" required>
+
+    <label for="password">Password:</label>
+    <input id="password" th:field="*{password}" type="password" required>
+
+    <button type="submit">Sign in</button>
+    <p>Don't have an account? <a href="/user/register">Sign up</a></p>
+</form>
+</body>
+
+</html>

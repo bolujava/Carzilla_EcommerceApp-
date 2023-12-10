@@ -1,0 +1,134 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Product Application</title>-->
+<!--</head>-->
+<!--<body>-->
+
+
+<!--<table>-->
+<!--    <b th:text="${paid}"></b>-->
+<!--    <div> Payment </div>-->
+<!--    <thead><td>Product Name</td><td>Price</td><td>Pay</td></thead>-->
+<!--    <tr th:each="product: ${products}">-->
+<!--        <td th:text="${product.productName}"></td>-->
+<!--        <td th:text="${product.price}"></td>-->
+<!--        <td ><a th:href="@{/products/add-cart(cart=${product.id})}">Pay</a></td>-->
+<!--    </tr>-->
+<!--    <tr ><td th:text="${totalPrice}"> <td></tr>-->
+<!--    <a href="/products/pay">Proceed checkout</a>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Application</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://images.unsplash.com/photo-1618849888061-496363a8f3ba?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        /* Overlay to dim the background */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5); /* Adjust opacity (0.5 is semi-transparent) */
+            pointer-events: none; /* Allow clicks to go through the overlay */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        .payment-container {
+            background-color: #3498db;
+            padding: 15px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .payment-header {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .checkout-btn-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .checkout-btn {
+            display: inline-block;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="payment-container">
+    <div class="payment-header">Payment</div>
+    <b th:text="${paid}"></b>
+</div>
+
+<table>
+    <thead><td>Product Name</td><td>Price</td><td>Pay</td></thead>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.productName}"></td>
+        <td th:text="${product.price}"></td>
+        <td><a th:href="@{/products/add-cart(cart=${product.id})}">Pay</a></td>
+    </tr>
+    <tr><td th:text="${totalPrice}"></td></tr>
+</table>
+
+<div class="checkout-btn-container">
+    <a class="checkout-btn" href="/products/pay">Proceed to Checkout</a>
+</div>
+
+</body>
+</html>
+

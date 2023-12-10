@@ -1,0 +1,203 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>Product Application</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--Sign Up-->
+<!--<form method ="post" action ="/user/sign-up" th:object="${user}">-->
+<!--  Username:<input th:field ="*{username}">-->
+<!--  Fullname:<input th:field="*{fullName}">-->
+<!--  Password:<input th:field="*{password}" type ="password">-->
+<!--  <button type = "submit">Sign up</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>Product Application</title>-->
+<!--  <style>-->
+<!--    body {-->
+<!--      font-family: 'Arial', sans-serif;-->
+<!--      margin: 0;-->
+<!--      padding: 0;-->
+<!--      display: flex;-->
+<!--      justify-content: center;-->
+<!--      align-items: center;-->
+<!--      height: 100vh;-->
+<!--      transition: transform 0.5s ease-in-out;-->
+<!--      background: url('https://storage.googleapis.com/pai-images/60fff927ea0648e1b9b9ad53a99d3cbc.jpeg') no-repeat center center fixed;-->
+<!--      background-size: cover;-->
+<!--    }-->
+
+<!--    body:hover {-->
+<!--      transform: scale(1.1);-->
+<!--    }-->
+
+<!--    form {-->
+<!--      max-width: 400px;-->
+<!--      width: 100%;-->
+<!--      background: rgba(255, 255, 255, 0.8);-->
+<!--      padding: 20px;-->
+<!--      border-radius: 8px;-->
+<!--      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--    }-->
+
+<!--    input {-->
+<!--      width: 100%;-->
+<!--      padding: 10px;-->
+<!--      margin-bottom: 15px;-->
+<!--      box-sizing: border-box;-->
+<!--      border: 1px solid #ccc;-->
+<!--      border-radius: 4px;-->
+<!--      font-size: 16px;-->
+<!--    }-->
+
+<!--    button {-->
+<!--      background-color: #FF0000;-->
+<!--      color: #fff;-->
+<!--      padding: 12px 20px;-->
+<!--      border: none;-->
+<!--      border-radius: 4px;-->
+<!--      cursor: pointer;-->
+<!--      font-size: 16px;-->
+<!--      width: 100%;-->
+<!--    }-->
+
+<!--    button:hover {-->
+<!--      background-color: #C70000;-->
+<!--      /* You can adjust the hover color if needed */-->
+<!--    }-->
+<!--  </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<form method="post" action="/user/sign-up" th:object="${user}">-->
+<!--  <h3 style="text-align: center;">Elites choose their cars by signing up</h3>-->
+<!--  <h2 style="text-align: center;">Sign Up Now</h2>-->
+<!--  <label for="username">Username:</label>-->
+<!--  <input id="username" th:field="*{username}" type="text" required>-->
+
+<!--  <label for="fullName">Fullname:</label>-->
+<!--  <input id="fullName" th:field="*{fullName}" type="text" required>-->
+
+<!--  <label for="password">Password:</label>-->
+<!--  <input id="password" th:field="*{password}" type="password" required>-->
+
+<!--  <button type="submit">Sign up</button>-->
+<!--</form>-->
+<!--</body>-->
+
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Application</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('https://storage.googleapis.com/pai-images/60fff927ea0648e1b9b9ad53a99d3cbc.jpeg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    form {
+      max-width: 400px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #FF0000;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #C70000;
+    }
+
+    .button-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .button-container a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #FF0000;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      display: inline-block;
+    }
+
+    .button-container a:hover {
+      background-color: #C70000;
+    }
+  </style>
+</head>
+
+<body>
+<div class="button-container">
+  <a href="#" class="testimonial">Testimonial</a>
+  <a href="/" class="back-home">Back Home</a>
+</div>
+<form method="post" action="/user/sign-up" th:object="${user}">
+  <h3 style="text-align: center;">Elites choose their cars by signing up</h3>
+  <h2 style="text-align: center;">Sign Up Now</h2>
+  <label for="username">Username:</label>
+  <input id="username" th:field="*{username}" type="text" required>
+
+  <label for="fullName">Fullname:</label>
+  <input id="fullName" th:field="*{fullName}" type="text" required>
+
+  <label for="password">Password:</label>
+  <input id="password" th:field="*{password}" type="password" required>
+
+  <button type="submit">Sign up</button>
+</form>
+</body>
+
+</html>

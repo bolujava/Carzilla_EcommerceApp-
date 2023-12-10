@@ -1,0 +1,415 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Product Application</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--Welcome <p th:text="${userID}"></p>-->
+<!--<a href="/user/logout">logout</a>-->
+
+<!--<table>-->
+<!--    <div th:text="${cartItems}"></div>-->
+<!--    <thead><td>Product Name</td><td>Categories</td><td>Price</td><td>Quantity</td><td>Add cart</td></thead>-->
+<!--    <tr th:each="product: ${products}">-->
+<!--        <td th:text="${product.productName}"></td>-->
+<!--        <td th:text="${product.categories}"></td>-->
+<!--        <td th:text="${product.price}"></td>-->
+<!--        <td th:text="${product.quantity}"></td>-->
+<!--        <td ><a th:href="@{/products/add-cart(cart=${product.id})}">Add to cart</a></td>-->
+<!--    </tr>-->
+<!--    <a href="/products/payment">Proceed checkout</a>-->
+<!--</table>-->
+<!--</body>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Product Application</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 20px;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        #cart-counter {-->
+<!--            position: absolute;-->
+<!--            top: 10px;-->
+<!--            left: 10px;-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--            padding: 5px 10px;-->
+<!--            border-radius: 50%;-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        table {-->
+<!--            width: 100%;-->
+<!--            border-collapse: collapse;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        th, td {-->
+<!--            border: 1px solid #ddd;-->
+<!--            padding: 8px;-->
+<!--            text-align: left;-->
+<!--        }-->
+
+<!--        th {-->
+<!--            background-color: #f2f2f2;-->
+<!--        }-->
+
+<!--        a {-->
+<!--            text-decoration: none;-->
+<!--            padding: 5px 10px;-->
+<!--            border-radius: 4px;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .add-to-cart, .remove-from-cart {-->
+<!--            display: inline-block;-->
+<!--            padding: 8px 12px;-->
+<!--            margin: 5px;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            transition: background-color 0.3s;-->
+<!--        }-->
+
+<!--        .add-to-cart {-->
+<!--            background-color: #4CAF50;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .remove-from-cart {-->
+<!--            background-color: #FF5733;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .checkout-btn {-->
+<!--            background-color: #4CAF50;-->
+<!--            padding: 10px;-->
+<!--            color: white;-->
+<!--            text-decoration: none;-->
+<!--            border-radius: 4px;-->
+<!--            display: inline-block;-->
+<!--            margin-top: 20px;-->
+<!--        }-->
+
+<!--        .logout-btn {-->
+<!--            position: absolute;-->
+<!--            top: 10px;-->
+<!--            right: 10px;-->
+<!--            background-color: #333;-->
+<!--            padding: 5px 10px;-->
+<!--            border-radius: 4px;-->
+<!--            color: white;-->
+<!--            text-decoration: none;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="cart-counter">0</div>-->
+<!--<div>-->
+<!--    Welcome <p th:text="${userID}"></p>-->
+<!--    <a href="/user/logout" class="logout-btn">Logout</a>-->
+<!--</div>-->
+
+<!--<table>-->
+<!--    <thead>-->
+<!--    <td>Product Name</td>-->
+<!--    <td>Categories</td>-->
+<!--    <td>Price</td>-->
+<!--    <td>Quantity</td>-->
+<!--    <td>Action</td>-->
+<!--    </thead>-->
+<!--    <tr th:each="product: ${products}">-->
+<!--        <td th:text="${product.productName}"></td>-->
+<!--        <td th:text="${product.categories}"></td>-->
+<!--        <td th:text="${product.price}"></td>-->
+<!--        <td th:text="${product.quantity}"></td>-->
+<!--        <td>-->
+<!--            <a th:href="@{/products/add-cart(cart=${product.id})}" class="add-to-cart" th:attr="data-id=${product.id}">Add to cart</a>-->
+<!--            <a th:href="@{/products/remove-cart(cart=${product.id})}" class="remove-from-cart" th:attr="data-id=${product.id}">Remove from cart</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--</table>-->
+
+<!--<a href="/products/payment" class="checkout-btn">Proceed to checkout</a>-->
+
+<!--<script>-->
+<!--    // JavaScript logic to handle button click events and add/remove from cart-->
+<!--    var cartCounter = 0;-->
+<!--    var cartCounterElement = document.getElementById('cart-counter');-->
+
+<!--    document.addEventListener('click', function (event) {-->
+<!--        if (event.target.classList.contains('add-to-cart')) {-->
+<!--            // Handle add to cart logic here-->
+<!--            var productId = event.target.getAttribute('data-id');-->
+<!--            console.log('Add to cart clicked for product ID: ' + productId);-->
+<!--            cartCounter++;-->
+<!--        } else if (event.target.classList.contains('remove-from-cart')) {-->
+<!--            // Handle remove from cart logic here-->
+<!--            var productId = event.target.getAttribute('data-id');-->
+<!--            console.log('Remove from cart clicked for product ID: ' + productId);-->
+<!--            cartCounter = Math.max(0, cartCounter - 1);-->
+<!--        }-->
+
+<!--        // Update the cart counter display-->
+<!--        cartCounterElement.innerHTML = cartCounter;-->
+<!--        cartCounterElement.style.display = cartCounter > 0 ? 'block' : 'none';-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      position: relative;
+    }
+
+    #cart-counter {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 50%;
+      display: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    a {
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: white;
+    }
+
+    .add-to-cart, .remove-from-cart {
+      display: inline-block;
+      padding: 8px 12px;
+      margin: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .add-to-cart {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .remove-from-cart {
+      background-color: #FF5733;
+      color: white;
+    }
+
+    .checkout-btn {
+      background-color: #4CAF50;
+      padding: 10px;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #333;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<div id="cart-counter">0</div>
+<div>
+  Welcome <p th:text="${userID}"></p>
+  <a href="/user/logout" class="logout-btn">Logout</a>
+</div>
+
+<table>
+  <thead>
+  <td>Product Name</td>
+  <td>Categories</td>
+  <td>Price</td>
+  <td>Quantity</td>
+  <td>Action</td>
+  </thead>
+  <tr th:each="product: ${products}">
+    <td th:text="${product.productName}"></td>
+    <td th:text="${product.categories}"></td>
+    <td th:text="${product.price}"></td>
+    <td th:text="${product.quantity}"></td>
+    <td>
+      <a th:href="@{/products/add-cart(cart=${product.id})}" class="add-to-cart" th:attr="data-id=${product.id}">Add to cart</a>
+      <a th:href="@{/products/remove-cart(cart=${product.id})}" class="remove-from-cart" th:attr="data-id=${product.id}">Remove from cart</a>
+    </td>
+  </tr>
+</table>
+
+<a href="/products/payment" class="checkout-btn">Proceed to checkout</a>
+
+<div class="notification" id="notification">Product added to cart</div>
+
+<!--<script>-->
+<!--    // var cartCounter = 0;-->
+<!--    // var cartCounterElement = document.getElementById('cart-counter');-->
+<!--    // var notificationElement = document.getElementById('notification');-->
+<!--    //-->
+<!--    // document.addEventListener('click', function (event) {-->
+<!--    //     if (event.target.classList.contains('add-to-cart')) {-->
+<!--    //         var productId = event.target.getAttribute('data-id');-->
+<!--    //         console.log('Add to cart clicked for product ID: ' + productId);-->
+<!--    //         cartCounter++;-->
+<!--    //         showNotification();-->
+<!--    //     } else if (event.target.classList.contains('remove-from-cart')) {-->
+<!--    //         var productId = event.target.getAttribute('data-id');-->
+<!--    //         console.log('Remove from cart clicked for product ID: ' + productId);-->
+<!--    //         cartCounter = Math.max(0, cartCounter - 1);-->
+<!--    //     }-->
+<!--    //-->
+<!--    //     // Update the cart counter display-->
+<!--    //     cartCounterElement.innerHTML = cartCounter;-->
+<!--    //     cartCounterElement.style.display = cartCounter > 0 ? 'block' : 'none';-->
+<!--    // });-->
+<!--    //-->
+<!--    // function showNotification() {-->
+<!--    //     notificationElement.style.opacity = 1;-->
+<!--    //     setTimeout(function () {-->
+<!--    //         notificationElement.style.opacity = 0;-->
+<!--    //     }, 5000); // Adjust the duration as needed (2 seconds in this case)-->
+<!--    // }-->
+
+<!--</script>-->
+
+<!-- ... (your existing HTML code) ... -->
+
+
+
+
+<!--<script>-->
+<!--    var cartCounter = 0;-->
+<!--    var cartCounterElement = document.getElementById('cart-counter');-->
+<!--    var notificationElement = document.getElementById('notification');-->
+<!--    var isNotificationShowing = false;-->
+
+<!--    document.addEventListener('click', function (event) {-->
+<!--        if (event.target.classList.contains('add-to-cart')) {-->
+<!--            var productId = event.target.getAttribute('data-id');-->
+<!--            console.log('Add to cart clicked for product ID: ' + productId);-->
+<!--            cartCounter++;-->
+<!--            showNotification('Product added to cart');-->
+<!--        } else if (event.target.classList.contains('remove-from-cart')) {-->
+<!--            var productId = event.target.getAttribute('data-id');-->
+<!--            console.log('Remove from cart clicked for product ID: ' + productId);-->
+<!--            cartCounter = Math.max(0, cartCounter - 1);-->
+<!--            showNotification('Product removed from cart');-->
+<!--        }-->
+
+<!--        // Update the cart counter display-->
+<!--        cartCounterElement.innerHTML = cartCounter;-->
+<!--        cartCounterElement.style.display = cartCounter > 0 ? 'block' : 'none';-->
+<!--    });-->
+
+<!--    function showNotification(message) {-->
+<!--        if (isNotificationShowing) {-->
+<!--            // If notification is already showing, return to prevent quick fading-->
+<!--            return;-->
+<!--        }-->
+
+<!--        // Display the notification-->
+<!--        notificationElement.innerHTML = message;-->
+<!--        notificationElement.style.opacity = 1;-->
+<!--        isNotificationShowing = true;-->
+
+<!--        setTimeout(function () {-->
+<!--            // Fade out the notification after a delay-->
+<!--            notificationElement.style.opacity = 0;-->
+<!--            isNotificationShowing = false;-->
+<!--        }, 2000); // Adjust the duration as needed (2 seconds in this case)-->
+<!--    }-->
+<!--</script>-->
+
+<!-- ... (your existing HTML code) ... -->
+
+<script>
+  var cartCounter = 0;
+  var cartCounterElement = document.getElementById('cart-counter');
+  var notificationElement = document.getElementById('notification');
+
+  document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('add-to-cart')) {
+      var productId = event.target.getAttribute('data-id');
+      console.log('Add to cart clicked for product ID: ' + productId);
+      cartCounter++;
+      showNotification('+' + cartCounter);
+    } else if (event.target.classList.contains('remove-from-cart')) {
+      var productId = event.target.getAttribute('data-id');
+      console.log('Remove from cart clicked for product ID: ' + productId);
+      cartCounter = Math.max(0, cartCounter - 1);
+      showNotification('-' + cartCounter);
+    }
+
+    // Update the cart counter display
+    cartCounterElement.innerHTML = cartCounter;
+    cartCounterElement.style.display = cartCounter > 0 ? 'block' : 'none';
+  });
+
+  function showNotification(message) {
+    // Display the notification
+    notificationElement.innerHTML = message;
+    notificationElement.style.display = 'block';
+
+    setTimeout(function () {
+      // Hide the notification after a delay
+      notificationElement.style.display = 'none';
+    }, 1000); // Adjust the duration as needed (1 second in this case)
+  }
+</script>
+</body>
+</html>

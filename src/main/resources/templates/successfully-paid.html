@@ -1,0 +1,119 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Product Application</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<b th:text="${paid}"></b>-->
+<!--<a href="/products/all">Continue Shopping</a>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--https://cdn.dribbble.com/users/2397255/screenshots/14467709/media/746a996251aab2f714771648ab06f3dd.mp4-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            color: #333;
+        }
+
+        b {
+            font-size: 24px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #4285f4;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #3367d6;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            b {
+                font-size: 18px;
+            }
+
+            a {
+                font-size: 14px;
+            }
+        }
+
+        /* Payment Success Message */
+        .success-message {
+            display: none;
+            color: #4CAF50;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        /* Checkmark Icon */
+        .checkmark {
+            color: #4CAF50;
+            font-size: 48px;
+            margin-top: 20px;
+        }
+
+        /* Continue Shopping Button */
+        .continue-shopping {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        // JavaScript for displaying payment success message
+        document.addEventListener('DOMContentLoaded', function () {
+            var successMessage = document.querySelector('.success-message');
+            var checkmarkIcon = document.querySelector('.checkmark');
+            var continueShoppingButton = document.querySelector('.continue-shopping');
+            var paidText = document.querySelector('b');
+
+            // Simulating a successful payment after a delay (you can replace this with your actual logic)
+            setTimeout(function () {
+                successMessage.style.display = 'block';
+                checkmarkIcon.style.display = 'block';
+                continueShoppingButton.style.display = 'block';
+            }, 2000); // 2000 milliseconds (2 seconds) delay for demonstration
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <i class="fas fa-check-circle checkmark"></i>
+    <b th:text="${paid}"></b>
+    <a href="/products/all" class="continue-shopping" id="continueShopping">Continue Shopping</a>
+    <div class="success-message">Payment Successful</div>
+</div>
+</body>
+</html>

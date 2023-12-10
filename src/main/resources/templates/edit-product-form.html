@@ -1,0 +1,93 @@
+<!-- edit-product-form.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Add your head content here -->
+</head>
+<style>/* Add your styles to this CSS file or include it in your HTML file */
+
+/* Add your styles to this CSS file or include it in your HTML file */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  width: 50%;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center align the content within the div */
+}
+
+h2 {
+  color: #333;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Center align the button within the form */
+form button {
+  margin: 0 auto;
+}
+
+</style>
+<body>
+<div>
+  <h2>Edit Product</h2>
+
+  <form action="/admin/edit-product" method="post" th:object="${product}">
+    <label for=>ProductID:</label>
+    <input type="text" th:field="*{id}" />
+    <label for=>Categories:</label>
+    <input type="text" th:field="*{categories}" required />
+    <label for=>Product Name:</label>
+    <input type="text" th:field="*{productName}" required />
+    <label for=>Price:</label>
+    <input type="text" th:field="*{price}" required />
+    <label for=>Image:</label>
+    <input type="text" th:field="*{image}" required />
+    <label for=>Quantity</label>
+    <input type="text" th:field="*{quantity}" />
+
+
+    <!-- Include input fields for other product properties -->
+
+    <button type="submit">Save Changes</button>
+  </form>
+</div>
+</body>
+</html>
